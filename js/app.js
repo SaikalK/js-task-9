@@ -19,13 +19,14 @@ guessBtn.addEventListener("click", function() {
     let guess = parseInt(guessInput.value);
 
     if (isNaN(guess) || guess < min || guess > max) {
-        setMessage("Нужно ввести число от ${min} до ${max}", "red");
+        setMessage(`Нужно ввести число от ${min} до ${max}`, "red");
         guessInput.value = "";
         guessBtn.addEventListener("click", () => window.location.reload());
     }
+
    
     if (guess === winningNum) {
-        setMessage("Поздравляю! Вы угадали число: ${winningNum}!", "blue");
+        setMessage(`Поздравляю! Вы угадали число: ${winningNum}!`, "blue");
         btnMessage("Играть снова", "blue");
         guessInput.disabled = true;
         guessInput.style.border = "2px solid blue";
@@ -34,16 +35,18 @@ guessBtn.addEventListener("click", function() {
     }
     else if (guess != winningNum) {
         guessesLeft--;
-        setMessage('Вы не угадали число. Осталось попыток: ${guessesLeft}', "red");
+        setMessage(`Вы не угадали число. Осталось попыток: ${guessesLeft}`, "red");
     }
     if (guessesLeft === 0) {
-        setMessage('Вы не угадали загаданное число: ${winningNum}!', "red");
-        btnMessage('Играть снова', "red");
+        setMessage(`Вы не угадали загаданное число: ${winningNum}!`, "red");
+        btnMessage(`Играть снова`, "red");
         guessInput.disabled = true;
         guessInput.style.border = "2px solid red";
         guessInput.value = "";
         guessBtn.addEventListener("click", () => window.location.reload());
     }
+
+
 
        function setMessage(msg, color) {
            message.textContent = msg;
